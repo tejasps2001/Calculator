@@ -1,0 +1,34 @@
+#container {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 80vh;
+    align-items: center;
+}
+
+/* Try padding also in vh and vw */
+
+#display {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 0;
+    width: 29vw;
+    height: 20vh;
+}
+
+#buttons {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*Aligning functions but not operations?? */
+}
+
+.function {
+    padding: 10px 80px;
+}
+
+.button.operator, .button.number {
+    padding: 35px;
+}
