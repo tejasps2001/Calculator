@@ -23,6 +23,8 @@ let operatorSymbols = Object.keys(operators);
 function getOperands(e) {
     let keyPressed = e.target.innerText;
     if(keyPressed == '=') return [a, op, b];
+    // print all inputs to display except when '=' pressed.
+    updateDisplay(e);
     if(secondOperand) {
         b += keyPressed;
         return;
@@ -47,5 +49,4 @@ btns.forEach(btn => btn.addEventListener('click', e => {
         let result = operate(...operands);
         updateResult(result);
     }
-    updateDisplay(e);
 }))
