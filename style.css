@@ -7,8 +7,6 @@
     align-items: center;
 }
 
-/* Try padding also in vh and vw */
-
 #display {
     border: 1px solid black;
     display: flex;
@@ -22,7 +20,6 @@
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    align-items: center; /*Aligning functions but not operations?? */
 }
 
 .function {
