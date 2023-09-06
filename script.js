@@ -27,6 +27,8 @@ function getOperands(e) {
     updateDisplay(e);
     if(secondOperand) {
         b += keyPressed;
+        let result = operate(a, op, b);
+        updateResult(result);
         return;
     }
     if(operatorSymbols.includes(keyPressed)) {
@@ -38,15 +40,10 @@ function getOperands(e) {
 }
 
 function updateResult(str) {
-    resultString.textContent += str;
+    resultString.textContent = str;
 }
 
 let btns = document.querySelectorAll('button');
 btns.forEach(btn => btn.addEventListener('click', e => {
-    let operands = getOperands(e);
-    // operands returns meaningful answer only after user presses '='.
-    if (operands) {
-        let result = operate(...operands);
-        updateResult(result);
-    }
+    getOperands(e);
 }))
