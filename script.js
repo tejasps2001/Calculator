@@ -16,24 +16,30 @@ function updateDisplay(e) {
     displayString.textContent += e.target.innerText;
 }
 
-function getOperands() {
-    let expression = new Array(1);
-    let ops = Object.keys(operators);
-    for (op of ops) {
-        expression = displayString.textContent.split(op);
-        if (expression.length > 1) break;
+// Consider each keypress as first operand until afterOperand is false.
+let afterOperand = false;
+let operatorSymbols = Object.keys(operators);
+function getOperands(e) {
+    let keyPressed = e.target.innerText;
+    if(keyPressed == '=') return [a, op, b];
+    if(afterOperand) {
+        b += keyPressed;
+        return;
     }
-    console.log(expression)
-    return expression[0], expression[1], op;
+    if(operatorSymbols.includes(keyPressed)) {
+        op = keyPressed;
+        afterOperand = true;
+        return;
+    }
+    a += keyPressed;
 }
 
 let btns = document.querySelectorAll('button');
 btns.forEach(btn => btn.addEventListener('click', e => {
-    if (btn.innerText == '=') {
-        let a = getOperands();
-        console.log(a)
-        let result = operate(a, op, b);
-        updateResult(result);
+    let operands = getOperands(e);
+    // operands returns meaningful answer only after user presses '='.
+    if (operands) {
+        let result = operate(...operands);
     }
     updateDisplay(e);
 }))
