@@ -16,19 +16,19 @@ function updateDisplay(e) {
     displayString.textContent += e.target.innerText;
 }
 
-// Consider each keypress as first operand until afterOperand is false.
-let afterOperand = false;
+// Consider each keypress as first operand until secondOperand is false.
+let secondOperand = false;
 let operatorSymbols = Object.keys(operators);
 function getOperands(e) {
     let keyPressed = e.target.innerText;
     if(keyPressed == '=') return [a, op, b];
-    if(afterOperand) {
+    if(secondOperand) {
         b += keyPressed;
         return;
     }
     if(operatorSymbols.includes(keyPressed)) {
         op = keyPressed;
-        afterOperand = true;
+        secondOperand = true;
         return;
     }
     a += keyPressed;
