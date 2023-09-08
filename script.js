@@ -9,6 +9,11 @@ let a = 0;
 let op = '';
 let b = 0;
 
+function beSnarky() {
+    let snarkyMsg = "Nice try! You can't divide by zero. 🙄"
+    updateResult(snarkyMsg);
+}
+
 let calculate = (a, op, b) => operators[op](a, b);
 let displayString = document.querySelector('#expression');
 let resultString = document.querySelector('#result');
@@ -51,12 +56,17 @@ function operate(e, keyPressed) {
         */
         a = result;
         op = keyPressed;
-
         secondOperand = true;
         return;
     }
     if (secondOperand) {
         b += keyPressed;
+
+        // Divide by zero error.
+        if (op == "÷" && Number(b) == 0) {
+            beSnarky();
+            return;
+        }
         result = calculate(a, op, b);
         updateResult(result);
         return;
