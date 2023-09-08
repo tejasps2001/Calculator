@@ -9,7 +9,7 @@ let a = 0;
 let op = '';
 let b = 0;
 
-let operate = (a, op, b) => operators[op](a, b);
+let calculate = (a, op, b) => operators[op](a, b);
 let displayString = document.querySelector('#expression');
 let resultString = document.querySelector('#result');
 
@@ -20,16 +20,20 @@ function updateDisplay(e) {
     }
 }
 
+function updateResult(str) {
+    resultString.textContent = str;
+}
+
 // Consider each keypress as first operand until secondOperand is false.
 let secondOperand = false;
 let operatorSymbols = Object.keys(operators);
 let result;
 
-function calculate(e) {
+function operateCalc(e) {
     let keyPressed = e.target.innerText;
-    if(keyPressed == '=') { 
+    if (keyPressed == '=') {
         if (a && op && b) {
-            /* TODO: Show only result then similar to gcalc. */ 
+            /* TODO: Show only result then similar to gcalc. */
             return;
         }
 
@@ -38,7 +42,7 @@ function calculate(e) {
     }
 
     updateDisplay(e);
-    if(operatorSymbols.includes(keyPressed)) {
+    if (operatorSymbols.includes(keyPressed)) {
 
         // Reset b to prevent concatenation to previous operands.
         b = 0;
@@ -52,9 +56,9 @@ function calculate(e) {
         secondOperand = true;
         return;
     }
-    if(secondOperand) {
+    if (secondOperand) {
         b += keyPressed;
-        result = operate(a, op, b);
+        result = calculate(a, op, b);
         updateResult(result);
         return;
     }
@@ -66,11 +70,7 @@ function calculate(e) {
     result = a;
 }
 
-function updateResult(str) {
-    resultString.textContent = str;
-}
-
 let btns = document.querySelectorAll('button');
 btns.forEach(btn => btn.addEventListener('click', e => {
-    calculate(e);
+    operateCalc(e);
 }))
