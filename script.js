@@ -5,9 +5,9 @@ let operators = {
     "-": (a, b) => Number(a) - Number(b),
 };
 
-let a = 0;
+let a = '';
 let op = '';
-let b = 0;
+let b = '';
 
 function beSnarky() {
     let snarkyMsg = "Nice try! You can't divide by zero. 🙄"
@@ -45,7 +45,6 @@ function operate(e, keyPressed) {
         return;
     }
 
-    updateDisplay(e);
     if (operatorSymbols.includes(keyPressed)) {
 
         // Reset b to prevent concatenation to previous operands.
@@ -56,10 +55,13 @@ function operate(e, keyPressed) {
         */
         a = result;
         op = keyPressed;
+        updateDisplay(e);
         secondOperand = true;
         return;
     }
     if (secondOperand) {
+        
+        if (keyPressed == '.' && b.includes('.')) return;
         b += keyPressed;
 
         // Divide by zero error.
@@ -68,10 +70,13 @@ function operate(e, keyPressed) {
             return;
         }
         result = calculate(a, op, b);
+        updateDisplay(e);
         updateResult(result);
         return;
     }
+    if (keyPressed == '.' && a.includes('.')) return;
     a += keyPressed;
+    updateDisplay(e);
 
     /* 1st operand of the very first operation should be in result to 
        make line 43 to work properly.
