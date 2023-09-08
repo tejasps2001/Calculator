@@ -14,22 +14,30 @@ let displayString = document.querySelector('#expression');
 let resultString = document.querySelector('#result');
 
 function updateDisplay(e) {
-    displayString.textContent += e.target.innerText;
+    // Print all inputs to display except when '=' pressed.
+    if (e.target.innerText !== '=') {
+        displayString.textContent += e.target.innerText;
+    }
 }
 
 // Consider each keypress as first operand until secondOperand is false.
 let secondOperand = false;
 let operatorSymbols = Object.keys(operators);
 let result;
+
 function calculate(e) {
     let keyPressed = e.target.innerText;
     if(keyPressed == '=') { 
-        /* TODO: Show only result then similar to gcalc. */ 
+        if (a && op && b) {
+            /* TODO: Show only result then similar to gcalc. */ 
+            return;
+        }
+
+        // Do nothing if '=' pressed before all inputs given.
+        return;
     }
 
-    // Print all inputs to display except when '=' pressed.
     updateDisplay(e);
-    
     if(operatorSymbols.includes(keyPressed)) {
 
         // Reset b to prevent concatenation to previous operands.
