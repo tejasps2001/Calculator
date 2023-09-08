@@ -29,8 +29,7 @@ let secondOperand = false;
 let operatorSymbols = Object.keys(operators);
 let result;
 
-function operateCalc(e) {
-    let keyPressed = e.target.innerText;
+function operate(e, keyPressed) {
     if (keyPressed == '=') {
         if (a && op && b) {
             /* TODO: Show only result then similar to gcalc. */
@@ -68,6 +67,25 @@ function operateCalc(e) {
        make line 43 to work properly.
     */
     result = a;
+}
+
+function resetCalc() {
+    a = 0;
+    b = 0;
+    displayString.textContent = '';
+    resultString.textContent = '';
+    secondOperand = false;
+}
+
+function operateCalc(e) {
+    let keyPressed = e.target.innerText;
+    switch(keyPressed) {
+        case 'AC':
+            resetCalc();
+            break;
+        default:
+            operate(e, keyPressed);
+    }
 }
 
 let btns = document.querySelectorAll('button');
