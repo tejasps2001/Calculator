@@ -21,7 +21,7 @@ function updateDisplay(e) {
 let secondOperand = false;
 let operatorSymbols = Object.keys(operators);
 let result;
-function getOperands(e) {
+function calculate(e) {
     let keyPressed = e.target.innerText;
     if(keyPressed == '=') { 
         /* TODO: Show only result then similar to gcalc. */ 
@@ -64,5 +64,5 @@ function updateResult(str) {
 
 let btns = document.querySelectorAll('button');
 btns.forEach(btn => btn.addEventListener('click', e => {
-    getOperands(e);
+    calculate(e);
 }))
