@@ -24,10 +24,10 @@ let calculate = (a, op, b) => {
 let displayString = document.querySelector('#expression');
 let resultString = document.querySelector('#result');
 
-function updateDisplay(e) {
+function updateDisplay(term) {
     // Print all inputs to display except when '=' pressed.
-    if (e.target.innerText !== '=') {
-        displayString.textContent += e.target.innerText;
+    if (term !== '=') {
+        displayString.textContent += term;
     }
 }
 
@@ -41,8 +41,8 @@ let secondOperand = false;
 let operatorSymbols = Object.keys(operators);
 let result;
 
-function operate(e, keyPressed) {
-    if (keyPressed == '=') {
+function operate(term) {
+    if (term == '=') {
         if (a && op && b) {
             /* TODO: Show only result then similar to gcalc. */
             return;
@@ -52,7 +52,7 @@ function operate(e, keyPressed) {
         return;
     }
 
-    if (operatorSymbols.includes(keyPressed)) {
+    if (operatorSymbols.includes(term)) {
 
         // Reset b to prevent concatenation to previous operands.
         b = '';
@@ -61,16 +61,16 @@ function operate(e, keyPressed) {
            is the result of the previous operation.
         */
         a = result;
-        op = keyPressed;
-        updateDisplay(e);
+        op = term;
+        updateDisplay(term);
         secondOperand = true;
         return 'op';
     }
     if (secondOperand) {
-        if (keyPressed == '.' && b.includes('.')) return;
-        b += keyPressed;
+        if (term == '.' && b.includes('.')) return;
+        b += term;
         if (b == '.') {
-            updateDisplay(e);
+            updateDisplay(term);
             return 'b';
         }
 
@@ -79,16 +79,16 @@ function operate(e, keyPressed) {
             beSnarky();
             return 'b';
         }
-        updateDisplay(e);
+        updateDisplay(term);
         result = calculate(a, op, b);
         updateResult(result);
         return 'b';
     }
-    if (keyPressed == '.' && a.includes('.')) {
+    if (term == '.' && a.includes('.')) {
         return;
     }
-    updateDisplay(e);
-    a += keyPressed;
+    updateDisplay(term);
+    a += term;
 
     /* 1st operand of the very first operation should be in result to 
        make line 43 to work properly.
@@ -163,9 +163,8 @@ function backspace(modified) {
 // Define as global so as to use it in backspace() function.
 let modifiedTerm;
 
-function operateCalc(e) {
-    let keyPressed = e.target.innerText;
-    switch (keyPressed) {
+function operateCalc(term) {
+    switch (term) {
         case 'AC':
             resetCalc();
             break;
@@ -175,11 +174,11 @@ function operateCalc(e) {
             break;
         default:
             // Return the term that is added.
-            modifiedTerm = operate(e, keyPressed);
+            modifiedTerm = operate(term);
     }
 }
 
 let btns = document.querySelectorAll('button');
 btns.forEach(btn => btn.addEventListener('click', e => {
-    operateCalc(e);
+    operateCalc(e.target.innerText);
 }))
