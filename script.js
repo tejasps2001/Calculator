@@ -89,6 +89,7 @@ function operate(term) {
 
         // Divide by zero error.
         if (op == "÷" && Number(b) == 0) {
+            updateDisplay(term);
             beSnarky();
             return 'b';
         }
