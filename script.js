@@ -17,7 +17,10 @@ function beSnarky() {
 let calcHistory = {};
 
 let calculate = (a, op, b) => {
-    let answer = operators[op](a, b).toFixed(2);
+    let answer = operators[op](a, b);
+    answer = Number.isInteger(answer) 
+                ? answer
+                : answer.toFixed(2);
     calcHistory[displayString.textContent] = answer;
     return answer;
 }
