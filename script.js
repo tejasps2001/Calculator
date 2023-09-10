@@ -5,6 +5,16 @@ let operators = {
     "-": (a, b) => Number(a) - Number(b),
 };
 
+let allowedInputs = {
+    '*': 'x', 
+    '/': '÷',
+    'Enter': '=',
+    'Backspace': '⌫',
+    '.': ".",
+    '+': '+',
+    '-': '-',
+};
+
 let a = '';
 let op = '';
 let b = '';
@@ -185,3 +195,15 @@ let btns = document.querySelectorAll('button');
 btns.forEach(btn => btn.addEventListener('click', e => {
     operateCalc(e.target.innerText);
 }))
+
+let mapSymbols = Object.keys(allowedInputs);
+window.addEventListener('keydown', e => {
+    if (mapSymbols.includes(e.key)) {
+        operateCalc(allowedInputs[e.key]);
+        return;
+    }
+    if (Number.isInteger(Number(e.key))) {
+        operateCalc(e.key);
+    }
+    return;
+})
