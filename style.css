@@ -52,3 +52,13 @@ body {
     padding: 40px;
     border-radius: 100%;
 }
+
+#clear {
+    background-color: rgb(0, 56, 0);
+    color:rgb(0, 216, 0);
+}
+
+#backspace {
+    background-color: rgb(146, 1, 1);
+    color: rgb(255, 0, 0);
+}
