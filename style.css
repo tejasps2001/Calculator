@@ -1,4 +1,10 @@
+@font-face {
+    font-family: Product Sans;
+    src: url(./fonts/Product\ Sans\ Regular.ttf);
+}
+
 body {
+    font-family: 'Product Sans', 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
 }
@@ -23,6 +29,16 @@ body {
     height: 200px;
 }
 
+#expression {
+    font-size: 70px;
+    color: whitesmoke;
+}
+
+#result {
+    font-size: 52px;
+    color: rgb(175, 175, 175);
+}
+
 #buttons {
     display: flex;
     height: 500px;
@@ -41,8 +57,9 @@ body {
 .button.function {
     box-sizing: border-box;
     height: 50px;
-    padding: 10px 83px;
+    padding: 5px 75px;
     border-radius: 5%;
+    font-size: 25px;
 }
 
 .button.operator, .button.number {
@@ -51,6 +68,10 @@ body {
     height: 90px;
     padding: 40px;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
 }
 
 #clear {
