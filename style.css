@@ -7,6 +7,7 @@ body {
     font-family: 'Product Sans', 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
+    background-color: rgb(17, 16, 16);
 }
 
 #container {
@@ -21,12 +22,15 @@ body {
 
 #display {
     border: 1px solid black;
+    background-color: rgb(48, 45, 45);
     border-radius: 5%;
     display: flex;
     flex-direction: column;
     margin: 1vh 0;
     width: 380px;
     height: 200px;
+    text-align: right;
+    padding: 5px;
 }
 
 #expression {
@@ -52,6 +56,10 @@ body {
     width: 390px;
     justify-content: space-around;
     align-items: center;
+}
+
+button {
+    border-style: none;
 }
 
 .button.function {
