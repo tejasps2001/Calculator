@@ -43,6 +43,7 @@ body {
 #result {
     font-size: 52px;
     color: rgb(175, 175, 175);
+    overflow-x: auto; /* Scroll overflow on the right */
 }
 
 #buttons {
