@@ -18,6 +18,7 @@ body {
     width: 400px;
     height: 680px;
     align-items: center;
+    background-color: rgb(20, 19, 19);
 }
 
 #display {
@@ -93,4 +94,9 @@ button {
 #backspace {
     background-color: rgb(146, 1, 1);
     color: rgb(255, 0, 0);
+}
+
+.button.number {
+    color: rgb(88, 164, 252);
+    background-color: rgb(32, 32, 32);
 }
