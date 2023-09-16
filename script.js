@@ -66,6 +66,9 @@ function operate(term) {
     }
 
     if (operatorSymbols.includes(term)) {
+        let lastCharacter = displayString.textContent.charAt
+                                (displayString.textContent.length - 1);
+        if (operatorSymbols.includes(lastCharacter)) return 'op';
 
         // Reset b to prevent concatenation to previous operands.
         b = '';
