@@ -36,6 +36,8 @@ body {
 #expression {
     font-size: 70px;
     color: whitesmoke;
+    text-align: right; /* Set text alignment to right */
+    overflow-x: auto; /* Scroll overflow on the right */
 }
 
 #result {
