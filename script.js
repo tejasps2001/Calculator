@@ -207,11 +207,13 @@ function operateCalc(term) {
 
 let btns = document.querySelectorAll('button');
 btns.forEach(btn => btn.addEventListener('click', e => {
+    e.target.blur();
     operateCalc(e.target.innerText);
 }))
 
 let mapSymbols = Object.keys(allowedInputs);
 window.addEventListener('keydown', e => {
+    e.target.blur();
     if (mapSymbols.includes(e.key)) {
         operateCalc(allowedInputs[e.key]);
         return;
