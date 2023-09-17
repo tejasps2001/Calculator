@@ -11,10 +11,10 @@ body {
 
 .main {
     font-family: 'Product Sans', 'Times New Roman', Times, serif;
-    height: 93vh;
     display: flex;
     justify-content: center;
     background-color: rgb(17, 16, 16);
+    margin-bottom: 35px;
 }
 
 #container {
@@ -149,6 +149,7 @@ footer {
     font-size: 20px;
     background-color: rgb(17, 16, 16);
     text-align: center;
+    margin-bottom: 20px;
 }
 
 a {
