@@ -116,3 +116,23 @@ button {
     color: rgb(224, 224, 224);
     transform: scale(1.7) translate(-80px, 10px);
 }
+
+.button.number:hover {
+    background-color: rgb(71, 71, 71);
+}
+
+.button.operator:hover {
+    background-color: rgb(24, 76, 145);
+}
+
+.button.equals:hover {
+    background-color: rgb(45, 66, 255);
+}
+
+#backspace:hover {
+    background-color: rgb(165, 38, 38);
+}
+
+#clear:hover {
+    background-color: rgb(0, 95, 0);
+}
