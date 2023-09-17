@@ -41,11 +41,13 @@ function updateDisplay(term) {
     // Print all inputs to display except when '=' pressed.
     if (term !== '=') {
         displayString.textContent += term;
+        displayString.scrollBy({ behavior: "auto", left: 70});
     }
 }
 
 function updateResult(str) {
     resultString.textContent = str;
+    resultString.scrollBy({ behavior: "auto", left: 52});
 
 }
 
