@@ -35,7 +35,7 @@ let calculate = (a, op, b) => {
     return answer;
 }
 let displayString = document.querySelector('#expression');
-let resultString = document.querySelector('#result');
+let resultString = document.querySelector('.result');
 
 function updateDisplay(term) {
     // Print all inputs to display except when '=' pressed.
@@ -58,7 +58,10 @@ function operate(term) {
     if (term == '=') {
         if (a && op && b) {
             /* TODO: Show only result then similar to gcalc. */
-            return;
+            console.log('Hello')
+            displayString.setAttribute('hidden', '')
+            resultString.classList.add('emphasize');
+            return 'eq';
         }
 
         // Do nothing if '=' pressed before all inputs given.
@@ -117,6 +120,8 @@ function operate(term) {
 function resetCalc() {
     a = '';
     b = '';
+    displayString.removeAttribute('hidden', '');
+    resultString.classList.remove('emphasize');
     displayString.textContent = '';
     resultString.textContent = '';
     secondOperand = false;
@@ -181,6 +186,12 @@ function backspace(modified) {
 let modifiedTerm;
 
 function operateCalc(term) {
+
+    // "Disable" all buttons except AC if '=' pressed.
+    if (modifiedTerm == 'eq') {
+        if (term != 'AC') return;
+        modifiedTerm = '';
+    }
     switch (term) {
         case 'AC':
             resetCalc();
