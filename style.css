@@ -92,6 +92,7 @@ button {
     justify-content: center;
     align-items: center;
     font-size: 40px;
+    transition: border-radius 0.1s ease-in-out;
 }
 
 #clear {
@@ -122,6 +123,10 @@ button {
 .emphasize {
     color: rgb(224, 224, 224);
     transform: scale(1.7) translate(-80px, 10px);
+}
+
+.button.equals:hover, .button.number:hover, .button.operator:hover {
+    border-radius: 30%;
 }
 
 .button.number:hover {
