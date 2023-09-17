@@ -58,7 +58,6 @@ function operate(term) {
     if (term == '=') {
         if (a && op && b) {
             /* TODO: Show only result then similar to gcalc. */
-            console.log('Hello')
             displayString.setAttribute('hidden', '')
             resultString.classList.add('emphasize');
             return 'eq';
