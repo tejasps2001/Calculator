@@ -1,2 +1,2 @@
 # Calculator
-Calculator built using HTML, CSS and JS.
+Google Android Calculator built using HTML, CSS and JS.
